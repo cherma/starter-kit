@@ -1,0 +1,76 @@
+{   
+  "plugins": [ "react", "prettier", "react-hooks"],
+  "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended"
+  ],
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest": true
+  },
+"parser": "babel-eslint",
+"parserOptions": {
+  "ecmaVersion": 6,
+  "sourceType": "module",
+  "ecmaFeatures": {
+    "jsx": true,
+    "experimentalObjectRestSpread": true
+  }
+},
+"rules": {
+  "brace-style": ["error", "1tbs"],
+  "camelcase": ["error",{
+    "properties": "never"
+  }],
+  "dot-notation": "error",
+  "eqeqeq": "error",
+  "func-style": ["error", "expression", { "allowArrowFunctions": true }],
+  "indent": ["error", 2,{"SwitchCase": 1}],
+  "no-eval": "error",
+  "no-trailing-spaces": "error",
+  "no-unused-vars": [
+    "error",
+    {
+      "vars": "all",
+      "args": "none",
+      "ignoreRestSiblings": true
+    }
+  ],
+  "no-mixed-spaces-and-tabs": ["error"],
+  "no-console": "error",
+  "no-var": "error",
+  "object-shorthand": "error",
+  "prefer-arrow-callback": "error",
+  "prefer-const": "error",
+  "quotes": ["error", "single"],
+  "react/jsx-uses-vars": ["error"],
+  "react/prefer-es6-class": "error",
+  "react/prefer-stateless-function": "error",
+  "react/display-name": "off",
+  "semi": "error",
+  "no-warning-comments": [
+    "warn",
+    {
+      "terms": ["todo"],
+      "location": "anywhere"
+    }
+  ],
+  "react-hooks/rules-of-hooks": "error",
+  "react-hooks/exhaustive-deps": "warn"
+},
+"globals": { "fetch": false, "Promise": true ,"browser": true},
+"settings": {
+  "import/resolver": "webpack",
+  "react": {
+    "createClass": "createReactClass", // Regex for Component Factory to use,
+                                       // default to "createReactClass"
+    "pragma": "React",  // Pragma to use, default to "React"
+    "version": "detect", // React version. "detect" automatically picks the version you have installed.
+                         // You can also use `16.0`, `16.3`, etc, if you want to override the detected value.
+                         // default to latest and warns if missing
+                         // It will default to "detect" in the future
+    "flowVersion": "0.53" // Flow version
+    }
+  }
+}
