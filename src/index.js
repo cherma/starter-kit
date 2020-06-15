@@ -2,8 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import { getUserInfo } from './actions';
-import App from './App';
+import App from 'components/App';
 import * as serviceWorker from './serviceWorker';
+//Global CSS
+import 'bootstrap/dist/css/bootstrap.css';
+import './assets/scss/now-ui-dashboard.css';
 //Redux Dependencies
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
