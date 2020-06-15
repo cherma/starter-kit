@@ -10,7 +10,7 @@ export const getUserDetails = function*(actions) {
       yield call(fetchUserInfo);
     }
   } catch (error) {
-    console.log('Error')
+    console.log('Error');
   }
 };
 

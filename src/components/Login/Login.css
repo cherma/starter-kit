@@ -1,0 +1,17 @@
+.login-content .now-ui-icons {
+    color: #fff;
+}
+
+.login-content input {
+    caret-color: #fff;
+    color: #fff;
+} 
+
+.login-content input:focus {
+    caret-color: #fff;
+    color: #fff;
+}
+
+.login-content .card-login.card-plain .form-control {
+    color: #fff;
+}

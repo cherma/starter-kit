@@ -1,0 +1,19 @@
+.stream-title-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stream-container .icon.icon-circle {
+  margin-top: 0px;
+}
+
+.card-footer .stream-stats {
+  text-align: right;
+}
+
+.stream-container .icon.icon-circle img {
+  height: 100%;
+  border-radius: 50%;
+}

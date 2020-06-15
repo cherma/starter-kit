@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import { getUserInfo } from './actions';
 import App from './App';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'assets/scss/now-ui-dashboard.css';
 import * as serviceWorker from './serviceWorker';
 //Redux Dependencies
 import { Provider } from 'react-redux';
