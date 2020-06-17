@@ -3,19 +3,10 @@ import {
   SHOW_LOADER,
   HIDE_LOADER,
   UPDATE_QUESTION,
-  GET_USER_INFO,
   UPDATE_USER_INFO,
   GET_STREAMS,
   UPDATE_STREAM_DATA,
 } from './types';
-
-export const getUserInfo = () => {
-  return { type: GET_USER_INFO };
-};
-
-export const doLogin = (email, password) => {
-  return { type: GET_USER_INFO, email, password };
-};
 
 export const updateUserInfo =  userInfo => {
   return { type: UPDATE_USER_INFO, userInfo };

@@ -1,5 +1,9 @@
+//Auth Types
 export const GET_USER_INFO = 'get_user_info';
 export const DO_LOGIN = 'do_login';
+export const SIGN_OUT = 'sign_out';
+export const FLUSH_ALL = 'flush_all';
+
 export const UPDATE_USER_INFO = 'update_user_info';
 
 export const GET_STREAMS = 'get_streams';
