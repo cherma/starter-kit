@@ -35,8 +35,8 @@ const Header = ({ routes, location, creditPoints, imagePreviewUrl, profileName, 
         if(prop.path === location.pathname){
           name = prop.name;
         }
-        return null;
       }
+      return null;
     });
     return name;
   };

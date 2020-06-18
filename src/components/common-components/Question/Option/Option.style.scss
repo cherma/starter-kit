@@ -1,0 +1,22 @@
+.option {
+
+  &-wrapper {
+    margin-bottom: 0.25rem;
+    position: relative;
+  }
+
+  &-content {
+    display: flex;
+    padding: 0 0.5rem;
+
+    &__option {
+      margin: 1.125rem 0.5rem 0;
+
+      #react-mathjax-preview-result {
+        p {
+          margin: 0;
+        }
+      }
+    }
+  }
+}

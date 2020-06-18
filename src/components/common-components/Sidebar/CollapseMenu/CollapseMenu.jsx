@@ -11,11 +11,11 @@ const CollapseMenu = ({key, avatar, profileName, child}) =>{
       <img src={avatar} alt="Avatar"/>
     </div>
     <div className="info">
-      <a href={'javascript:void(0);'} data-toggle="collapse" aria-expanded={expand} onClick={() => setExpand(!expand)}>
+      <div data-toggle="collapse" aria-expanded={expand} onClick={() => setExpand(!expand)}>
         <span>{profileName}
           <b className="caret"></b>
         </span>
-      </a>
+      </div>
       <Collapse isOpen={expand}>
         <ul className="nav" style={{marginTop:20}}>
           {

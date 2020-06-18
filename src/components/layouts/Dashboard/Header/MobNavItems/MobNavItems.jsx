@@ -22,25 +22,25 @@ const MobNavItems = ({ imagePreviewUrl, profileName, changePassword, signOut, hi
             <img src={imagePreviewUrl} height={34} alt="Avatar"/>
           </div>
           <div className="info" style={infoStyle}>
-            <a style={{color:'#5f6368'}}>
+            <div style={{color:'#5f6368'}}>
               {profileName}
-            </a>
+            </div>
           </div>
         </div>
       </NavItem>
       <NavItem>
-        <a title="Change Password" className="nav-link"  onClick={changePassword}>
+        <div title="Change Password" className="nav-link"  onClick={changePassword}>
           <p>
             <span className="d-lg-none d-md-block">Change Password</span>
           </p>
-        </a>
+        </div>
       </NavItem>
       <NavItem>
-        <a title="Sign out" className="nav-link"  onClick={signOut}>
+        <div title="Sign out" className="nav-link"  onClick={signOut}>
           <p>
             <span className="d-lg-none d-md-block">Sign out</span>
           </p>
-        </a>
+        </div>
       </NavItem>
     </React.Fragment>
   );

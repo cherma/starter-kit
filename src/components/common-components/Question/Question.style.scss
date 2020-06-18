@@ -1,0 +1,14 @@
+.question {
+
+  &--wrapper {
+    #react-mathjax-preview-result {
+      p {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  &--time-taken {
+    padding: 0.5rem;
+  }
+}

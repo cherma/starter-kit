@@ -7,7 +7,6 @@ const getWidth = () => window.innerWidth
 export const useCurrentWitdh = () => {
   // save current window width in the state object
   const [width, setWidth] = useState(getWidth());
-  const [color, setColor] = useState('transparent');
 
   // in this case useEffect will execute only once because
   // it does not have any dependencies.
@@ -20,8 +19,6 @@ export const useCurrentWitdh = () => {
       // change width from the state object after 150 milliseconds
       timeoutId = setTimeout(() =>{
         setWidth(getWidth());
-        console.log(width)
-        width < 993 ? setColor('white') : setColor('transparent');
       }, 150);
     };
     // set resize listener

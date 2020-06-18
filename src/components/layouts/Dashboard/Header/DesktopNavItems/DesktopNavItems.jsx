@@ -16,12 +16,12 @@ const DesktopNavItmes = ({ history, creditPoints, imagePreviewUrl, profileName, 
   return(
     <React.Fragment>
       <NavItem>
-        <a title="Trophies" className="nav-link">
+        <div title="Trophies" className="nav-link">
           <i className="now-ui-icons sport_trophy"><Badge id="badge-style" color="secondary">{creditPoints}</Badge></i>
           <p>
             <span className="d-lg-none d-md-block">Trophies</span>
           </p>
-        </a>
+        </div>
       </NavItem>
       <Dropdown title="Options" nav isOpen={dropdownOpen} toggle={dropdownToggle}>
         <DropdownToggle caret nav>
@@ -37,9 +37,9 @@ const DesktopNavItmes = ({ history, creditPoints, imagePreviewUrl, profileName, 
                 <img src={imagePreviewUrl} height={34} alt="Avatar"/>
               </div>
               <div className="info" style={infoStyle}>
-                <a style={{color:'#5f6368'}}>
+                <p style={{color:'#5f6368'}}>
                   {profileName}
-                </a>
+                </p>
               </div>
             </div>
           </DropdownItem>

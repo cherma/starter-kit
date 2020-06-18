@@ -4,7 +4,7 @@ import './index.css';
 import { getUserInfo } from './actions';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.css';
-import 'assets/scss/now-ui-dashboard.css';
+import 'assets/scss/now-ui-dashboard.scss';
 import 'react-perfect-scrollbar/dist/css/styles.css';
 import * as serviceWorker from './serviceWorker';
 //Redux Dependencies

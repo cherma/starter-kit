@@ -7,12 +7,12 @@ import { Switch, Route } from 'react-router';
 const App = () => {
 
   return (
-    <div className="skill-optima-app">
+    <React.Fragment>
       <Switch>
         <Route path={'/user'} component={Dashboard} />
         <Route path={'/'} component={AuthLayout} />
       </Switch>
-    </div>
+    </React.Fragment>
   );
 };
 

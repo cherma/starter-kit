@@ -1,0 +1,12 @@
+.time-taken {
+  display: flex;
+  align-items: center; 
+
+  &--content{
+    margin-bottom: 0;    
+  }
+
+  i {
+    padding-bottom: 1px;
+  }
+}
