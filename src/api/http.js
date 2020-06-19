@@ -1,7 +1,7 @@
 import axios from 'axios';
-
+//const baseURL = process.env.NODE_ENV === 'development' ? 'http://localhost:8080' : '';
 const http = axios.create({
-  baseURL: `${window.location.protocol}//${window.location.host}`,
+  withCredentials: true,
   headers: {
     Accept: 'application/json',
   },
@@ -12,7 +12,7 @@ http.interceptors.response.use(
   response => response,
   error => {
     if(error.response.status === 401) {
-      window.location.reload();
+      //window.location.reload();
     }
     return Promise.reject(error);
   }

@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import { getUserInfo } from './actions';
-import App from './App';
+import App from './components/App';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'assets/scss/now-ui-dashboard.scss';
 import 'react-perfect-scrollbar/dist/css/styles.css';
@@ -13,7 +12,6 @@ import { ConnectedRouter } from 'connected-react-router';
 import configureStore, { history } from './configureStore';
 
 const store = configureStore();
-store.dispatch(getUserInfo());
 
 ReactDOM.render(
   <React.StrictMode>

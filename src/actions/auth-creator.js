@@ -1,12 +1,13 @@
 import {
   GET_USER_INFO,
   SIGN_OUT,
-  FLUSH_ALL
+  FLUSH_ALL,
+  DO_LOGIN
 } from './types';
 
 
 export const doLogin = (email, password) => {
-  return { type: GET_USER_INFO, email, password };
+  return { type: DO_LOGIN, email, password };
 };
 
 export const getUserInfo = () => {

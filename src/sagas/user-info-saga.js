@@ -1,19 +1,32 @@
-import { takeEvery, call } from 'redux-saga/effects';
-import { GET_USER_INFO } from 'actions/types.js';
-import { fetchUserInfo } from 'api/user-info.js';
+import { takeEvery, call, put } from 'redux-saga/effects';
+import { GET_USER_INFO, DO_LOGIN } from 'actions/types.js';
+import { fetchUserInfo, fetchUserInfoLogin } from 'api/user-info.js';
+import { flushAll, updateUserInfo } from 'actions';
+import { push } from 'connected-react-router';
 
-export const getUserDetails = function*(actions) {
+export const getUserDetails = function*(action) {
   try {
-    if(!!actions.email && !!actions.password) {
-      alert();
-    } else {
-      yield call(fetchUserInfo);
-    }
+    const userInfo = yield call(fetchUserInfo);
+    yield put(updateUserInfo({ ...userInfo.data, isAppLoading: false, isLoggedIn: true}));
   } catch (error) {
-    console.log('Error');
+    yield put(updateUserInfo({isAppLoading: false, isLoggedIn: false}));
+    yield call(flushAll);
+  }
+};
+
+export const loginAccount = function*(action) {
+  try {
+    yield call(fetchUserInfoLogin(action.email, action.password));
+    yield put(push('/user/mark-questions'));
+    yield put(updateUserInfo({isAppLoading: false, isLoggedIn: true}));
+    //alert();
+  } catch (error) {
+    yield put(updateUserInfo({isLoading: false, isLoggedIn: false}));
+    yield call(flushAll);
   }
 };
 
 export default function* userInfoSaga() {
   yield takeEvery(GET_USER_INFO, getUserDetails);
+  yield takeEvery(DO_LOGIN, loginAccount);
 }

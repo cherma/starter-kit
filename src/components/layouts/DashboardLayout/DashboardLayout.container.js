@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 import { signout } from 'actions';
+import { getUserInfo } from 'utils/redux-selectors';
+
 const mapStateToProps = (state) => {
   return {
-    creditPoints:state.creditPoints,
-    profileName:state.profileName,
-    imagePreviewUrl:state.imagePreviewUrl
+    userInfo: getUserInfo(state)
   };
 };
 
