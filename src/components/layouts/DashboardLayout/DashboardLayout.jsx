@@ -7,17 +7,17 @@ import PanelHeader from './PanelHeader';
 import { dashboard } from 'constants/router-constants';
 import Dashboard from 'components/Dashboard';
 
-const DashboardLayout = ({ history, userInfo, location }) =>{
-  console.log(userInfo)
+const DashboardLayout = ({ history, userInfo, location }) => {
+  const {isLoggedIn, firstName, profileImage, logoUrl } = userInfo;
   return (
     <div className="wrapper">
-      <Sidebar />
+      <Sidebar location={location} profileImage={profileImage} firstName={firstName} logo={logoUrl} />
       <div className="main-panel">
         <Header routes={dashboard} history={history} location={location}/>
         <div>
           <PanelHeader size="sm"/>
           <div className="content">
-            <Dashboard  history={history} location={location} isLoggedIn={userInfo.isLoggedIn}/>
+            <Dashboard  history={history} location={location} isLoggedIn={isLoggedIn}/>
           </div>
         </div>
         <footer className={'footer'}>
@@ -36,9 +36,9 @@ DashboardLayout.propTypes = {
   userInfo: PropTypes.shape ({
     isLoggedIn: PropTypes.bool,
     creditPoints: PropTypes.string,
-    profileName: PropTypes.string,
-    imagePreviewUrl: PropTypes.string,
-    firstName: PropTypes.string
+    profileImage: PropTypes.string,
+    firstName: PropTypes.string,
+    logoUrl: PropTypes.string
   }),
   location: PropTypes.object,
   history: PropTypes.object

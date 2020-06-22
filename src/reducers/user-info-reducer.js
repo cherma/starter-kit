@@ -1,9 +1,10 @@
 import { UPDATE_USER_INFO } from '../actions/types';
 
 const initialState = {
-  isLoggedIn: true,
+  isLoggedIn: false,
   isAssessmentRunning: false,
-  isAppLoading: true
+  isAppLoading: true,
+  activeStream: '058d7406-2057-4e06-acb6-5f192c4d0fa6'
 };
 
 const userInfoReducer = (state = initialState, action) => {

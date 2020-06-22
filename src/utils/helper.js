@@ -34,3 +34,15 @@ export const millisToMinutesAndSeconds = (millis) =>{
   const seconds = ((millis % 60000) / 1000).toFixed(0);
   return minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
 };
+
+export const filterParamsConstructor = ( data, field, activeStream ) => {
+  const { isFullTest, practiceId, categoryId, subCategoryList, testSessionId, testSectionList} = data;
+  switch(field) {
+    case 'testType': return {courseId: activeStream, isFullTest, offset:0};
+    case 'practice': return {courseId: activeStream, practiceId, isFullTest, offset:0};
+    case 'category': return {courseId: activeStream, practiceId, isFullTest, offset:0, categoryId };
+    case 'subCategory': return {courseId: activeStream, practiceId, isFullTest, offset:0, categoryId, subCategoryList };
+    case 'testSession': return {courseId: activeStream, isFullTest, offset:0, testSessionId };
+    case 'testSectionList': return {courseId: activeStream, isFullTest, offset:0, testSessionId, testSectionList };
+  }
+};

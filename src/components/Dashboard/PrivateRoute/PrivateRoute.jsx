@@ -7,7 +7,7 @@ const PrivateRoute = ({ component: Component,allowUrl, ...rest }) =>
   <Route
     {...rest}
     render={props =>
-      allowUrl ?  <Component {...rest} {...props}  /> :
+      true ?  <Component {...rest} {...props}  /> :
         <Redirect
           to={{
             pathname: authPath.login,
@@ -17,7 +17,7 @@ const PrivateRoute = ({ component: Component,allowUrl, ...rest }) =>
   />;
 
 PrivateRoute.propTypes = {
-  component: PropTypes.element,
+  component: PropTypes.any,
   allowUrl: PropTypes.bool,
   location: PropTypes.any
 };

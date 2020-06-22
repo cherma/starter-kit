@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Card, Row, Col, CardBody, Label } from 'reactstrap';
 import Select from 'react-select';
 
@@ -19,7 +20,7 @@ class FilterMenu extends React.Component {
   }
 
   setStateAndCallBack = (isFullTest, practiceId, categoryId, subCategoryList, testSessionId, testSectionList, field) => {
-    const {updateData} = this.props;
+    const { updateData } = this.props;
     this.setState({ isFullTest, categoryId, practiceId, subCategoryList, testSessionId, testSectionList },
       ()=> updateData(this.state, field));
   }
@@ -184,5 +185,13 @@ class FilterMenu extends React.Component {
   }
 }
 
+FilterMenu.propTypes = {
+  practiceOptions: PropTypes.array,
+  categoryOptions: PropTypes.array,
+  subCategoryOptions: PropTypes.array,
+  testOptions: PropTypes.array,
+  testSectionOptions: PropTypes.array,
+  updateData: PropTypes.func
+};
 
 export default FilterMenu;
