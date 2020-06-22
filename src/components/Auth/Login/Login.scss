@@ -1,0 +1,14 @@
+.login-page {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+
+  .input-group-prepend {
+    margin-right: 0;
+  }
+
+  .custom-input-addon i {
+    color: #FFF;
+  }
+}

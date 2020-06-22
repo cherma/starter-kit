@@ -5,6 +5,7 @@ export const SIGN_OUT = 'sign_out';
 export const FLUSH_ALL = 'flush_all';
 export const UPDATE_ERROR_LOGS= 'update_error_logs';
 export const UPDATE_USER_INFO = 'update_user_info';
+export const REQUEST_FORGET_PASSWORD= 'request_forget_password';
 
 //Mark Questions
 export const SET_MARKED_QUESTION = 'set_mark_question';

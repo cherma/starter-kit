@@ -1,7 +1,7 @@
 export const authPath = {
   login: '/Login',
   signup: '/Register',
-  forgotPassword: '/auth/forgot-password',
+  forgotPassword: '/forgot-password',
 };
 
 export const dashboardPath = {

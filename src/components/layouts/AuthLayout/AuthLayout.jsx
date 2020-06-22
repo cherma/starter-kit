@@ -8,9 +8,10 @@ import { authPath, dashboardPath } from 'constants/router-constants';
 import './AuthLayout.style.scss';
 import bgImage from 'assets/img/bg-img.jpeg';
 
-const Login = lazy(() => import('../../Login'));
-const Signup = lazy(() => import('../../SignUp'));
-const ForgotPassword = lazy(() => import('../../ForgotPassword'));
+const Login = lazy(() => import('../../Auth/Login'));
+const ForgotPassword = lazy(() => import('../../Auth/ForgotPassword'));
+
+export const SITE_KEY = '6LdOsIQUAAAAAAKu33zJmN0M_tC3wcygzIgaZwY7';
 
 const AuthLayout = ({ isLoggedIn, goToPage }) =>  {
   useEffect(()=>{
@@ -25,9 +26,7 @@ const AuthLayout = ({ isLoggedIn, goToPage }) =>  {
           <Switch>
             <Suspense fallback={<div>Loading...</div>}>
               <Route exact path={authPath.login} component={Login}/>
-              <Route path={authPath.signup} component={Signup}/>
-              <Route path={authPath.signup} component={ForgotPassword}/>
-              <Route component={()=><div>OOPS WRONG PAGE</div>} />
+              <Route path={authPath.forgotPassword} component={()=><ForgotPassword sitekey={SITE_KEY} />}/>
             </Suspense>
           </Switch>
           <footer className={'footer' }>

@@ -1,0 +1,25 @@
+.login-footer{
+    &--navigator {
+        display: flex;
+    }
+
+    &--button {
+        margin-bottom: 10px !important;
+    }    
+
+    &--link{
+        a{
+            font-size: 10px;
+            color: #FFFFFF;
+            text-decoration: none;
+            touch-action: manipulation;
+            font-weight: 700;
+            text-transform: uppercase;
+            
+        }
+    
+    &__signup {
+        flex: 1;
+      }
+    }
+}
