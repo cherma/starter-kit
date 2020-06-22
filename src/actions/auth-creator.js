@@ -3,7 +3,10 @@ import {
   SIGN_OUT,
   FLUSH_ALL,
   DO_LOGIN,
-  REQUEST_FORGET_PASSWORD
+  REQUEST_FORGET_PASSWORD,
+  ACTIVATE_ACCOUNT,
+  UPDATE_ACTIVATE_ACCOUNT,
+  UPDATE_AUTH_LOADER
 } from './types';
 
 
@@ -17,6 +20,18 @@ export const getUserInfo = () => {
 
 export const requestForgotPassword = (email, captcha) => {
   return { type: REQUEST_FORGET_PASSWORD, email, captcha};
+};
+
+export const activateAccount = uuid => {
+  return { type:ACTIVATE_ACCOUNT, uuid };
+};
+
+export const updateActivateAccount = (message, isProfileChange, isLoading) => {
+  return { type:UPDATE_ACTIVATE_ACCOUNT, message, isProfileChange, isLoading };
+};
+
+export const updateAuthLoader = (status) => {
+  return { type:UPDATE_AUTH_LOADER, status };
 };
 
 export const signout = () => {

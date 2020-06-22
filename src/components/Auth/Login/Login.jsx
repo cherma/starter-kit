@@ -77,7 +77,7 @@ const Login = ({ doLogin, isLoading }) => {
             <Card className="card-login card-plain">
               <CardBody>
                 <div style={{textAlign:'center', margin: '1rem'}}>
-                  <img src={newLogo} height={64}/>
+                  <img src={newLogo} height={64} alt={'img'}/>
                 </div>
                 <FormInput
                   type={'email'}

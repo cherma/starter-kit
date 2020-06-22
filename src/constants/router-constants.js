@@ -2,6 +2,7 @@ export const authPath = {
   login: '/Login',
   signup: '/Register',
   forgotPassword: '/forgot-password',
+  activateAccount: '/activation'
 };
 
 export const dashboardPath = {

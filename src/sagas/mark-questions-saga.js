@@ -34,6 +34,7 @@ export const getMarkQuestion = function*(action) {
         yield call(getTestSection(action));
         break;
       }
+      default: break;
 
     }
   } catch (error) {

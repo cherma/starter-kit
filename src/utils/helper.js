@@ -44,5 +44,6 @@ export const filterParamsConstructor = ( data, field, activeStream ) => {
     case 'subCategory': return {courseId: activeStream, practiceId, isFullTest, offset:0, categoryId, subCategoryList };
     case 'testSession': return {courseId: activeStream, isFullTest, offset:0, testSessionId };
     case 'testSectionList': return {courseId: activeStream, isFullTest, offset:0, testSessionId, testSectionList };
+    default: return {courseId: activeStream, isFullTest, offset:0};
   }
 };

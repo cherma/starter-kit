@@ -3,6 +3,7 @@ export const getUserInfo = state => state.userInfo;
 export const getIsLoggedIn = state => state.userInfo.isLoggedIn;
 export const getIsAppLoading = state => state.userInfo.isAppLoading;
 export const getActiveStream = state => state.userInfo.activeStream;
+export const getAuthDetails = state => state.auth;
 
 //Dashboard => Markquestions
 export const getMarkedQuestionsDetails = state => state.markQuestions;

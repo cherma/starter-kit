@@ -60,6 +60,8 @@ class FilterMenu extends React.Component {
         this.setStateAndCallBack(isFullTest, '', '', [], testSessionId, testSectionList, field);
         break;
       }
+
+      default: break;
     }
   }
 

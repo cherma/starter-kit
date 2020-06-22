@@ -6,6 +6,10 @@ export const FLUSH_ALL = 'flush_all';
 export const UPDATE_ERROR_LOGS= 'update_error_logs';
 export const UPDATE_USER_INFO = 'update_user_info';
 export const REQUEST_FORGET_PASSWORD= 'request_forget_password';
+export const ACTIVATE_ACCOUNT = 'activate_account';
+export const UPDATE_ACTIVATE_ACCOUNT = 'update_activate_account';
+export const SUBMIT_ACTION = 'update_submit_action';
+export const UPDATE_AUTH_LOADER = 'update_auth_loader';
 
 //Mark Questions
 export const SET_MARKED_QUESTION = 'set_mark_question';
