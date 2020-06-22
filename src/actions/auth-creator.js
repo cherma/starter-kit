@@ -6,7 +6,9 @@ import {
   REQUEST_FORGET_PASSWORD,
   ACTIVATE_ACCOUNT,
   UPDATE_ACTIVATE_ACCOUNT,
-  UPDATE_AUTH_LOADER
+  UPDATE_AUTH_LOADER,
+  VALIDATE_RESET_PASSWORD_ID,
+  RESET_PASSWORD
 } from './types';
 
 
@@ -32,6 +34,14 @@ export const updateActivateAccount = (message, isProfileChange, isLoading) => {
 
 export const updateAuthLoader = (status) => {
   return { type:UPDATE_AUTH_LOADER, status };
+};
+
+export const validateId = (uuid) => {
+  return { type: VALIDATE_RESET_PASSWORD_ID, uuid };
+};
+
+export const resetPassword = (password) => {
+  return { type: RESET_PASSWORD, password };
 };
 
 export const signout = () => {

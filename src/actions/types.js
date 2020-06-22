@@ -10,6 +10,8 @@ export const ACTIVATE_ACCOUNT = 'activate_account';
 export const UPDATE_ACTIVATE_ACCOUNT = 'update_activate_account';
 export const SUBMIT_ACTION = 'update_submit_action';
 export const UPDATE_AUTH_LOADER = 'update_auth_loader';
+export const RESET_PASSWORD = 'reset_password';
+export const VALIDATE_RESET_PASSWORD_ID = 'validate_reset_password_id';
 
 //Mark Questions
 export const SET_MARKED_QUESTION = 'set_mark_question';

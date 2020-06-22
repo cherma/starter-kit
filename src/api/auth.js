@@ -12,3 +12,16 @@ export const activateUserAccount = (uuid) => {
   formData.append('uuid',uuid);
   return http.post('/skilloptima/user/activateUser', formData);
 };
+
+export const validateResetPassword = (uuid) => {
+  const formData  = new FormData();
+  formData.append('uuid',uuid);
+  return http.post('/skilloptima/user/validateId', formData);
+};
+
+export const requestResetPassword = (uuid, password) => {
+  const formData  = new FormData();
+  formData.append('password',password);
+  formData.append('uuid',uuid);
+  return http.post('/skilloptima/user/resetPassword', formData);
+};

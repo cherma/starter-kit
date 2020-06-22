@@ -11,6 +11,7 @@ import bgImage from 'assets/img/bg-img.jpeg';
 const Login = lazy(() => import('../../Auth/Login'));
 const ForgotPassword = lazy(() => import('../../Auth/ForgotPassword'));
 const Activation = lazy(()=>import('../../Auth/Activation'));
+const ResetPassword = lazy(()=> import('../../Auth/ResetPassword'));
 
 export const SITE_KEY = '6LdOsIQUAAAAAAKu33zJmN0M_tC3wcygzIgaZwY7';
 
@@ -26,6 +27,7 @@ const AuthLayout = ({ isLoggedIn, goToPage }) =>  {
         <div className="full-page section-image"  >
           <Switch>
             <Suspense fallback={<div>Loading...</div>}>
+              <Route path={authPath.resetPassword} component={()=><ResetPassword/>} />
               <Route exact path={authPath.login} component={Login}/>
               <Route path={authPath.forgotPassword} component={()=><ForgotPassword sitekey={SITE_KEY} />}/>
               <Route path={authPath.activateAccount} component={Activation} />
