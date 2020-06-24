@@ -2,20 +2,20 @@ import React from 'react';
 // used for making the prop types of this component
 import PropTypes from 'prop-types';
 
-const InfoArea = () => {
+const InfoArea = ({icon, iconColor, title, description}) => {
   return (
     <div className="info-area info-horizontal">
       {
-        this.props.icon !== undefined ? (
-          <div className={'icon icon-'+this.props.iconColor}>
-            <i className={this.props.icon}></i>
+        icon !== undefined ? (
+          <div className={'icon icon-'+iconColor}>
+            <i className={icon}></i>
           </div>
         ):null
       }
       <div className="description">
-        <h5 className={'info-title'}>{this.props.title}</h5>
+        <h5 className={'info-title'}>{title}</h5>
         <p className="description">
-          {this.props.description}
+          {description}
         </p>
       </div>
     </div>

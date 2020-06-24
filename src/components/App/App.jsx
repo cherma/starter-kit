@@ -11,7 +11,6 @@ import Alert from 'components/common-components/Alert';
 const App = ({ setupApp, goToPage, userInfo, visibleAlert}) => {
   const { isAppLoading, isLoggedIn, isAssessmentRunning } = userInfo;
   useEffect(() => {
-    console.log('setip')
     setupApp();
   },[]);
   return (
