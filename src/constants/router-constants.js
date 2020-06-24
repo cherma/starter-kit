@@ -14,6 +14,10 @@ export const dashboardPath = {
   changePassword: '/user/change-password'
 };
 
+export const testPath = {
+  takeTest: '/test/attend-test'
+};
+
 
 export const dashboard = [
   { image: true, path: '/user/profile', name: 'Profile', icon:'design_image'},

@@ -1,8 +1,8 @@
 import { UPDATE_USER_INFO } from '../actions/types';
 
 const initialState = {
-  isLoggedIn: false,
-  isAssessmentRunning: false,
+  isLoggedIn: true,
+  isAssessmentRunning: true,
   isAppLoading: true,
   activeStream: '058d7406-2057-4e06-acb6-5f192c4d0fa6'
 };

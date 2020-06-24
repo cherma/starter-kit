@@ -2,15 +2,18 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import AuthLayout from '../layouts/AuthLayout';
 import DashboardLayout from '../layouts/DashboardLayout';
+import TestLayout from '../layouts/TestLayout';
 import { Switch, Route } from 'react-router';
 import { renderIf } from 'utils/helper';
 import AppLoader from 'components/common-components/AppLoader';
 import Alert from 'components/common-components/Alert';
 
-const App = ({ isAppLoading, setupApp, goToPage, isLoggedIn, visibleAlert}) => {
+const App = ({ setupApp, goToPage, userInfo, visibleAlert}) => {
+  const { isAppLoading, isLoggedIn, isAssessmentRunning } = userInfo;
   useEffect(() => {
+    console.log('setip')
     setupApp();
-  });
+  },[]);
   return (
     <React.Fragment>
       {
@@ -19,6 +22,7 @@ const App = ({ isAppLoading, setupApp, goToPage, isLoggedIn, visibleAlert}) => {
           () => <AppLoader />,
           () =>  <Switch>
             <Route path={'/user'} component={DashboardLayout} />
+            <Route path={'/test'} component={()=><TestLayout goToPage={goToPage} isLoggedIn={isLoggedIn} isTestOn={isAssessmentRunning} />} />
             <Route path={'/'} component={()=><AuthLayout isLoggedIn={isLoggedIn} goToPage={goToPage} />} />
           </Switch>
         )
@@ -29,10 +33,13 @@ const App = ({ isAppLoading, setupApp, goToPage, isLoggedIn, visibleAlert}) => {
 };
 
 App.propTypes = {
-  isAppLoading: PropTypes.bool,
   setupApp: PropTypes.func,
   goToPage: PropTypes.func,
-  isLoggedIn: PropTypes.bool,
+  userInfo: PropTypes.shape({
+    isLoggedIn: PropTypes.bool,
+    isAssessmentRunning: PropTypes.bool,
+    isAppLoading: PropTypes.bool
+  }),
   visibleAlert: PropTypes.oneOfType([
     PropTypes.object.isRequired,
     PropTypes.oneOf([null]).isRequired,

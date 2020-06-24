@@ -18,7 +18,7 @@ export const SITE_KEY = '6LdOsIQUAAAAAAKu33zJmN0M_tC3wcygzIgaZwY7';
 const AuthLayout = ({ isLoggedIn, goToPage }) =>  {
   useEffect(()=>{
     isLoggedIn && goToPage(dashboardPath.markQuestion);
-  });
+  },[]);
 
   return (
     <div className="auth-layout" style={{ backgroundImage: 'url('+bgImage+')' }}>

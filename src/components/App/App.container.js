@@ -1,12 +1,11 @@
 import { connect } from 'react-redux';
 import { getUserInfo } from 'actions';
-import { getIsLoggedIn, getIsAppLoading, getVisibleAlert } from 'utils/redux-selectors';
+import { getVisibleAlert, getUserInfo as getUserInfoReducer } from 'utils/redux-selectors';
 import { push } from 'connected-react-router';
 
 const mapStateToProps = (state) => {
   return {
-    isAppLoading: getIsAppLoading(state),
-    isLoggedIn: getIsLoggedIn(state),
+    userInfo: getUserInfoReducer(state),
     visibleAlert: getVisibleAlert(state)
   };
 };

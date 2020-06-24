@@ -9,7 +9,7 @@ export const getUserDetails = function*(action) {
     const userInfo = yield call(fetchUserInfo);
     yield put(updateUserInfo({ ...userInfo.data, isAppLoading: false, isLoggedIn: true}));
   } catch (error) {
-    yield put(updateUserInfo({isAppLoading: false, isLoggedIn: false}));
+    yield put(updateUserInfo({isAppLoading: false, isLoggedIn: true, isAssessmentRunning: true}));
     yield call(flushAll);
   }
 };
