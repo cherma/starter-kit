@@ -21,6 +21,7 @@ export const GET_TEST_TYPE_MARKED_QUESTIONS= 'get_test_type_marked_questions';
 //Alerts
 export const ADD_ALERT = 'add_alert';
 export const REMOVE_ALERT = 'remove_alert';
+export const ADD_NOTIFICATION = 'add_notification';
 
 export const GET_STREAMS = 'get_streams';
 export const UPDATE_STREAM_DATA = 'update_stream_data';

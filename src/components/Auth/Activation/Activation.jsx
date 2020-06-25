@@ -6,7 +6,9 @@ import { Link } from 'react-router-dom';
 import { Card, CardBody, Form, Container, Col } from 'reactstrap';
 import { renderIf } from 'utils/helper';
 import ActivationContent from './ActivationContent';
+import AppLoader from 'components/common-components/AppLoader';
 import { authPath } from 'constants/router-constants';
+import L from 'utils/localization';
 import './Activation.style.scss';
 
 const Activation = ({ activateAccount, authDetails }) => {
@@ -17,10 +19,10 @@ const Activation = ({ activateAccount, authDetails }) => {
 
   const getActivationLayout = () => {
     switch(userActivation) {
-      case 'success': return <ActivationContent icon="success" message={isProfileChange ? 'Email updated successfully' : 'Registered successfully'}/>;
-      case 'invalid id': return <ActivationContent icon="wrong" message={'Invalid Id'}/>;
-      case 'already activated': return <ActivationContent icon="wrong" message={isProfileChange ? 'Email already updated':'Already a valid user'} />;
-      case 'link expired': return <ActivationContent icon="wrong" message={'Link expired'}/>;
+      case 'success': return <ActivationContent icon="success" message={isProfileChange ? L.t('Auth.activation.updated') : L.t('Auth.activation.registered')}/>;
+      case 'invalid id': return <ActivationContent icon="wrong" message={L.t('Auth.activation.invalidId')}/>;
+      case 'already activated': return <ActivationContent icon="wrong" message={isProfileChange ? L.t('Auth.activation.alreadyUpdated'):L.t('Auth.activation.alreadyRegistered')} />;
+      case 'link expired': return <ActivationContent icon="wrong" message={L.t('Auth.activation.expired')}/>;
       default: return <ActivationContent icon="wrong" />;
     }
   };
@@ -35,12 +37,12 @@ const Activation = ({ activateAccount, authDetails }) => {
                 {
                   renderIf(
                     () => isLoading,
-                    () => <div> Loading ...</div>,
+                    () => <AppLoader />,
                     () => getActivationLayout()
                   )
                 }
                 <Link to={authPath.login}>
-                Back to login<i className="now-ui-icons arrows-1_share-66"></i>
+                  {L.t('Auth.activation.loginText')}<i className="now-ui-icons arrows-1_share-66"></i>
                 </Link>
               </CardBody>
             </Card>

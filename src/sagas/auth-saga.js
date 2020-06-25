@@ -1,17 +1,28 @@
 import { takeEvery, call, put } from 'redux-saga/effects';
 import { REQUEST_FORGET_PASSWORD, ACTIVATE_ACCOUNT,VALIDATE_RESET_PASSWORD_ID, RESET_PASSWORD } from 'actions/types';
-import { updateErrorLogs, updateActivateAccount, updateAuthLoader } from 'actions';
+import { updateErrorLogs, updateActivateAccount, updateAuthLoader, addNotification, setButtonState } from 'actions';
 import { requestForgotPassword, activateUserAccount, validateResetPassword, requestResetPassword } from 'api/auth';
 import { push } from 'connected-react-router';
 import { authPath } from 'constants/router-constants';
+import L from 'utils/localization';
 
 export const forgotPassword = function*(action) {
   try {
-    const response = yield call(requestForgotPassword(action.email,action.captcha));
-    if (response.status === 'success') {
-      yield put(push(authPath.login));
+    yield put(setButtonState(true));
+    const response = yield call(requestForgotPassword,action.email,action.captcha);
+    const option = {
+      message: L.t('Auth.forgetPassword.failure'),
+      type: 'danger',
+    };
+    if(response.data.status === 'success') {
+      option.message = L.t('Auth.forgetPassword.success');
+      option.type = 'success';
     }
+    yield put(push(authPath.login));
+    yield put(setButtonState(false));
+    yield put(addNotification(option));
   } catch(error) {
+    yield put(setButtonState(false));
     yield call(updateErrorLogs(error));
   }
 };
@@ -19,7 +30,7 @@ export const forgotPassword = function*(action) {
 export const activateAccount = function*(action) {
   try {
     yield put(updateAuthLoader(true));
-    const response = yield call(activateUserAccount(action.uuid));
+    const response = yield call(activateUserAccount,action.uuid);
     const isProfileChange = window.location.search.includes('profile=true');
     yield put(updateActivateAccount(response.message, isProfileChange, false));
   } catch(error) {
@@ -29,9 +40,18 @@ export const activateAccount = function*(action) {
 
 export const validateResetId = function*(action) {
   try{
-    const response = yield call(validateResetPassword(action.uuid));
-    if(response !== 'success') {
+    const response = yield call(validateResetPassword, action.uuid);
+    if(response.data !== 'success') {
       yield put(push(authPath.login));
+      switch(response.data) {
+        case 'already used': {
+          yield put(addNotification({type: 'danger', message: L.t('Auth.resetPassword.expired')}));
+          break;
+        }
+        default: {
+          yield put(addNotification({type: 'danger', message: L.t('Auth.resetPassword.invalid')}));
+        }
+      }
     }
   } catch(error) {
     yield call(updateErrorLogs(error));
@@ -40,8 +60,26 @@ export const validateResetId = function*(action) {
 
 export const resetPassword = function*(action) {
   try {
-    yield call(requestForgotPassword(action.uuid, action.password));
+    yield put(setButtonState(true));
+    const response = yield call(requestResetPassword, action.uuid, action.password);
+    yield put(setButtonState(false));
+    switch(response.data) {
+      case 'already used': {
+        yield put(push(authPath.login));
+        yield put(addNotification({type: 'danger', message: L.t('Auth.resetPassword.expired')}));
+        break;
+      }
+      case 'success': {
+        yield put(push(authPath.login));
+        yield put(addNotification({type: 'success', message: L.t('Auth.resetPassword.success')}));
+        break;
+      }
+      default: {
+        yield put(addNotification({type: 'danger', message: L.t('Auth.resetPassword.invalid')}));
+      }
+    }
   } catch (error) {
+    yield put(setButtonState(false));
     yield call(updateErrorLogs(error));
   }
 

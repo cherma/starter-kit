@@ -16,13 +16,13 @@ export const validateEmail = (value) => {
   const result = {};
   if (value.length === 0) {
     result.error = true;
-    result.message = L.t('Signup.errors.email');
+    result.message = L.t('Auth.signup.errors.email');
   } else if (emailRex.test(value)) {
     result.error = false;
     result.message = '';
   } else {
     result.error =(true);
-    result.message = L.t('Signup.errors.email');
+    result.message = L.t('Auth.signup.errors.email');
   }
   return result;
 };
@@ -44,10 +44,10 @@ export const validatePassword = (value) => {
   const result = {};
   if (value.length < 6) {
     result.error = true;
-    result.message = L.t('Signup.errors.passwordLength');
+    result.message = L.t('Auth.signup.errors.passwordLength');
   } else if (!(value) || !numberRegex.test(value)) {
     result.error = true;
-    result.message = L.t('Signup.errors.passwordReq');
+    result.message = L.t('Auth.signup.errors.passwordReq');
   } else {
     result.error = false;
     result.message = '';

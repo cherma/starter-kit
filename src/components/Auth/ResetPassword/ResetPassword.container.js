@@ -11,7 +11,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    resetPassword: (password) => dispatch(resetPassword(password)),
+    resetPassword: (uuid, password) => dispatch(resetPassword(uuid,password)),
     validateId: (uuid) => dispatch(validateId(uuid)),
     goToPage: (page) => dispatch(push(page)),
   };

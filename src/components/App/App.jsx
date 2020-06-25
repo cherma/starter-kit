@@ -7,12 +7,15 @@ import { Switch, Route } from 'react-router';
 import { renderIf } from 'utils/helper';
 import AppLoader from 'components/common-components/AppLoader';
 import Alert from 'components/common-components/Alert';
+import Notification from 'components/common-components/Notification';
 
-const App = ({ setupApp, goToPage, userInfo, visibleAlert}) => {
+
+const App = ({ setupApp, goToPage, userInfo, visibleAlert, newNotification }) => {
   const { isAppLoading, isLoggedIn, isAssessmentRunning } = userInfo;
   useEffect(() => {
     setupApp();
   },[]);
+
   return (
     <React.Fragment>
       {
@@ -27,6 +30,7 @@ const App = ({ setupApp, goToPage, userInfo, visibleAlert}) => {
         )
       }
       { visibleAlert && <Alert visibleAlert={visibleAlert} /> }
+      <Notification />
     </React.Fragment>
   );
 };
@@ -40,6 +44,10 @@ App.propTypes = {
     isAppLoading: PropTypes.bool
   }),
   visibleAlert: PropTypes.oneOfType([
+    PropTypes.object.isRequired,
+    PropTypes.oneOf([null]).isRequired,
+  ]),
+  newNotification: PropTypes.oneOfType([
     PropTypes.object.isRequired,
     PropTypes.oneOf([null]).isRequired,
   ])

@@ -29,6 +29,7 @@ const ValidationField = ({ name, type, validations, placeholder, showError, erro
         blurCallback(event, name);
         break;
       }
+      default: break;
     }
   };
 

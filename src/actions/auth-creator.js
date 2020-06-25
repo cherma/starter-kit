@@ -8,7 +8,8 @@ import {
   UPDATE_ACTIVATE_ACCOUNT,
   UPDATE_AUTH_LOADER,
   VALIDATE_RESET_PASSWORD_ID,
-  RESET_PASSWORD
+  RESET_PASSWORD,
+  SUBMIT_ACTION
 } from './types';
 
 
@@ -22,6 +23,10 @@ export const getUserInfo = () => {
 
 export const requestForgotPassword = (email, captcha) => {
   return { type: REQUEST_FORGET_PASSWORD, email, captcha};
+};
+
+export const setButtonState = (state) => {
+  return { type: SUBMIT_ACTION, state};
 };
 
 export const activateAccount = uuid => {
@@ -40,8 +45,8 @@ export const validateId = (uuid) => {
   return { type: VALIDATE_RESET_PASSWORD_ID, uuid };
 };
 
-export const resetPassword = (password) => {
-  return { type: RESET_PASSWORD, password };
+export const resetPassword = (uuid, password) => {
+  return { type: RESET_PASSWORD, uuid, password };
 };
 
 export const signout = () => {

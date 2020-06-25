@@ -11,6 +11,7 @@ export const getMarkedQuestionsDetails = state => state.markQuestions;
 
 //Alerts n Notifications
 export const getVisibleAlert = (state) => (state.notification.alerts && state.notification.alerts.length > 0) ? state.notification.alerts[0] : null;
+export const getNewNotification = (state) => (state.notification.notification && state.notification.notification.length > 0) ? state.notification.notification[0] : null;
 
 
 export const getQuestionData = state => state.question;

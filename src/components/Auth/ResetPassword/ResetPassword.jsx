@@ -5,14 +5,15 @@ import { Card, CardBody, Form, Container, Col, CardFooter } from 'reactstrap';
 import FormInput from 'components/common-components/FormInput';
 import { validatePassword } from 'utils/field-validators';
 import { authPath } from 'constants/router-constants';
+import L from 'utils/localization';
 import './ResetPassword.style.scss';
 
 const ResetPassword = ({ resetPassword, validateId, goToPage, disableButton }) => {
   const [passwordError, setPasswordError] = useState(false);
   const [password, setPassword] = useState('');
+  const idValue = new URL(window.location.href).searchParams.get('id');
 
   useEffect(()=>{
-    const idValue = new URL(window.location.href).searchParams.get('id');
     if(idValue) {
       validateId(idValue);
     } else {
@@ -21,12 +22,8 @@ const ResetPassword = ({ resetPassword, validateId, goToPage, disableButton }) =
   },[]);
 
   const blurHandler = (e, data, error) => {
-    if (data !== '' && !e.relatedTarget) {
-      setPassword(data);
-      setPasswordError(error);
-    } else if( data === '') {
-      setPassword(data);
-    }
+    setPassword(data);
+    setPasswordError(error);
   };
 
   const changeHandler = (event) => {
@@ -40,7 +37,7 @@ const ResetPassword = ({ resetPassword, validateId, goToPage, disableButton }) =
     if(validate.error) {
       setPasswordError(validate.message);
     } else {
-      resetPassword(password);
+      resetPassword(idValue, password);
     }
   };
 
@@ -61,6 +58,7 @@ const ResetPassword = ({ resetPassword, validateId, goToPage, disableButton }) =
                 <FormInput
                   type={'password'}
                   autoFocus={true}
+                  validations={['new', 'password']}
                   placeholder={'Password'}
                   changeCallback={changeHandler}
                   blurCallback={(e, data, errorMsg) => blurHandler(e, data, errorMsg)}
@@ -74,7 +72,7 @@ const ResetPassword = ({ resetPassword, validateId, goToPage, disableButton }) =
               <CardFooter>
                 <Button color="primary" size="lg" disabled={disableButton}
                   block round onClick={handleForgotPassword} >
-                Reset Password
+                  {L.t('Auth.resetPassword.cta')}
                 </Button>
               </CardFooter>
             </Card>

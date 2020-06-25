@@ -19,7 +19,7 @@ const authReducer = (state = initialState, action) => {
 
     case SUBMIT_ACTION: return {
       ...state,
-      disableButton: action.status
+      disableButton: action.state
     };
 
     case UPDATE_AUTH_LOADER: return {

@@ -1,4 +1,9 @@
-import { ADD_ALERT, REMOVE_ALERT } from './types';
+import { ADD_ALERT, REMOVE_ALERT, ADD_NOTIFICATION } from './types';
+
+export const addNotification = (option) => ({
+  type: ADD_NOTIFICATION,
+  notification:option
+});
 
 const addAlert = alert => ({
   type: ADD_ALERT,

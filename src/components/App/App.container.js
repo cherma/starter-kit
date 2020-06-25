@@ -1,12 +1,13 @@
 import { connect } from 'react-redux';
 import { getUserInfo } from 'actions';
-import { getVisibleAlert, getUserInfo as getUserInfoReducer } from 'utils/redux-selectors';
+import { getVisibleAlert, getUserInfo as getUserInfoReducer, getNewNotification } from 'utils/redux-selectors';
 import { push } from 'connected-react-router';
 
 const mapStateToProps = (state) => {
   return {
     userInfo: getUserInfoReducer(state),
-    visibleAlert: getVisibleAlert(state)
+    visibleAlert: getVisibleAlert(state),
+    newNotification: getNewNotification(state)
   };
 };
 

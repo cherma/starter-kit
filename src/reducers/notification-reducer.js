@@ -1,10 +1,11 @@
-import { ADD_ALERT, REMOVE_ALERT } from 'actions/types';
+import { ADD_ALERT, REMOVE_ALERT, ADD_NOTIFICATION } from 'actions/types';
 
 const initialState = {
   alerts: [],
+  notification:[]
 };
 
-const notificataionReducer = (state = initialState, action) => {
+const notificationReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_ALERT:
       return {
@@ -16,9 +17,17 @@ const notificataionReducer = (state = initialState, action) => {
         ...state,
         alerts: [...state.alerts].filter(a => a.id !== action.id)
       };
+    case ADD_NOTIFICATION:{
+      const notification = {...action.notification};
+      notification.id = Math.floor(Math.random() * 100);
+      return {
+        ...state,
+        notification: [{...notification}]
+      };
+    }
     default:
       return state;
   }
 };
 
-export default notificataionReducer;
+export default notificationReducer;

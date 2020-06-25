@@ -8,7 +8,7 @@ import { validateEmail } from 'utils/field-validators';
 import './ForgotPassword.styles.scss';
 import { renderIf } from 'utils/helper';
 
-const ForgotPassword = ({ sitekey, forgotPassword }) =>{
+const ForgotPassword = ({ sitekey, forgotPassword, disableButton }) =>{
   const [emailError, setEmailError] = useState(false);
   const [email, setEmail] = useState('');
   const [captcha, setCaptcha] = useState({
@@ -44,7 +44,7 @@ const ForgotPassword = ({ sitekey, forgotPassword }) =>{
     } else if(captcha.isInvalidCaptcha) {
       setCaptcha({captcha:'', isInvalidCaptcha: 'Please check the check box'});
     } else {
-      forgotPassword(email, captcha);
+      forgotPassword(email, captcha.captcha);
     }
   };
 
@@ -71,7 +71,7 @@ const ForgotPassword = ({ sitekey, forgotPassword }) =>{
                 keyDown={keyPressHandler}
               />
               <ReCAPTCHA
-                style={{ display: 'inline-block' }}
+                className="forgot-password__captcha"
                 theme="light"
                 sitekey={sitekey}
                 onChange={handleCaptchaChange}
@@ -87,7 +87,8 @@ const ForgotPassword = ({ sitekey, forgotPassword }) =>{
               </div>
             </CardBody>
             <CardFooter>
-              <Button color="primary" size="lg" block round onClick={handleForgotPassword} >
+              <Button color="primary" size="lg" block
+                disabled={disableButton} round onClick={handleForgotPassword}>
               Next
               </Button>
             </CardFooter>
@@ -102,5 +103,6 @@ export default ForgotPassword;
 
 ForgotPassword.propTypes = {
   sitekey: PropTypes.string,
-  forgotPassword: PropTypes.func
+  forgotPassword: PropTypes.func,
+  disableButton: PropTypes.bool
 };

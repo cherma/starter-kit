@@ -58,8 +58,8 @@ const Signup = () => {
 
   const signupAccount = () => {
     const { firstName, lastName, email, password } = fields;
-    const isFirstNameValid = validateEmptyField(firstName, L.t('Signup.errors.firstName'));
-    const isLastNameValid = validateEmptyField(lastName, L.t('Signup.errors.lastName'));
+    const isFirstNameValid = validateEmptyField(firstName, L.t('Auth.signup.errors.firstName'));
+    const isLastNameValid = validateEmptyField(lastName, L.t('Auth.signup.errors.lastName'));
     const isEmailValid = validateEmail(email);
     const isPasswordValid = validatePassword(password);
 
@@ -82,7 +82,7 @@ const Signup = () => {
             <Card>
               <CardBody>
                 <ValidationField name={'firstName'} placeholder={'First Name'}
-                  errorMessage={L.t('Signup.errors.firstName')}
+                  errorMessage={L.t('Auth.signup.errors.firstName')}
                   showError={fields.firstNameIsError}
                   changeCallback={changeHandler}
                   keyDownCallback={keyPressHandler}
@@ -90,7 +90,7 @@ const Signup = () => {
 
                 <ValidationField name={'lastName'} placeholder={'Last Name'}
                   showError={fields.lastNameIsError}
-                  errorMessage={L.t('Signup.errors.lastName')}
+                  errorMessage={L.t('Auth.signup.errors.lastName')}
                   changeCallback={changeHandler}
                   keyDownCallback={keyPressHandler}
                   blurCallback={blurHandler} />
