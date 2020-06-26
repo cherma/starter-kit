@@ -1,6 +1,10 @@
 //Auth Types
 export const GET_USER_INFO = 'get_user_info';
 export const DO_LOGIN = 'do_login';
+export const CREATE_ACCOUNT = 'create_account';
+export const VERIFY_PHONE = 'verify_phone';
+export const VERIFY_EMAIL = 'verify_email';
+export const UPDATE_SIGNUP_RESPONSE = 'create_account_response';
 export const SIGN_OUT = 'sign_out';
 export const FLUSH_ALL = 'flush_all';
 export const UPDATE_ERROR_LOGS= 'update_error_logs';

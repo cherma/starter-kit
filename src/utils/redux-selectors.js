@@ -5,6 +5,9 @@ export const getIsAppLoading = state => state.userInfo.isAppLoading;
 export const getActiveStream = state => state.userInfo.activeStream;
 export const getAuthDetails = state => state.auth;
 export const getButtonState = state => state.auth.disableButton;
+export const getSignupData = state => state.auth.signup;
+export const getRegistedEmail = state => state.auth.signup.registedEmail;
+export const getRegistedPhone = state => state.auth.signup.registedPhone;
 
 //Dashboard => Markquestions
 export const getMarkedQuestionsDetails = state => state.markQuestions;

@@ -7,6 +7,7 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import { validateEmail } from 'utils/field-validators';
 import './ForgotPassword.styles.scss';
 import { renderIf } from 'utils/helper';
+import L from 'utils/localization';
 
 const ForgotPassword = ({ sitekey, forgotPassword, disableButton }) =>{
   const [emailError, setEmailError] = useState(false);
@@ -42,7 +43,7 @@ const ForgotPassword = ({ sitekey, forgotPassword, disableButton }) =>{
     if(validate.error) {
       setEmailError(validate.message);
     } else if(captcha.isInvalidCaptcha) {
-      setCaptcha({captcha:'', isInvalidCaptcha: 'Please check the check box'});
+      setCaptcha({captcha:'', isInvalidCaptcha: L.t('Auth.forgetPassword.captcha')});
     } else {
       forgotPassword(email, captcha.captcha);
     }

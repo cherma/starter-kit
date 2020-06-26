@@ -1,10 +1,15 @@
-import { UPDATE_ACTIVATE_ACCOUNT, SUBMIT_ACTION, UPDATE_AUTH_LOADER } from 'actions/types';
+import { UPDATE_ACTIVATE_ACCOUNT, SUBMIT_ACTION, UPDATE_AUTH_LOADER, UPDATE_SIGNUP_RESPONSE } from 'actions/types';
+import { act } from 'react-dom/test-utils';
 
 const initialState = {
   userActivation: '',
   isProfileChange: null,
   disableButton: false,
-  isLoading: false
+  isLoading: false,
+  signup: {
+    registedEmail: false,
+    registedPhone: false
+  }
 };
 
 const authReducer = (state = initialState, action) => {
@@ -26,6 +31,15 @@ const authReducer = (state = initialState, action) => {
       ...state,
       isLoading: action.status
     };
+
+    case UPDATE_SIGNUP_RESPONSE: {
+      const { signup } = state;
+      Object.assign(signup, action.data);
+      return {
+        ...state,
+        signup
+      };
+    }
 
     default: return state;
 

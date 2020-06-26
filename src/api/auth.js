@@ -1,5 +1,20 @@
 import http from './http';
 
+export const checkExistingPhone = (number) => {
+  const formData = new FormData();
+  formData.append('phone', number);
+
+  return http.post('/skilloptima/user/isExistingPhoneNumber', formData);
+};
+
+export const checkExistingEmail = (email) => {
+  const formData = new FormData();
+  formData.append('email', email);
+
+  return http.post('/skilloptima/user/isExistingMail', formData);
+};
+
+
 export const requestForgotPassword = (email, captcha) => {
   const formData  = new FormData();
   formData.append('email',email);

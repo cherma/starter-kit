@@ -11,12 +11,12 @@ export const nullValidator = (value) => {
   return !(value === '' || value === null || value === undefined);
 };
 
-export const validateEmail = (value) => {
+export const validateEmail = (value, emptyValidation=true) => {
   const emailRex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   const result = {};
-  if (value.length === 0) {
+  if (value.length === 0 && emptyValidation) {
     result.error = true;
-    result.message = L.t('Auth.signup.errors.email');
+    result.message = '';
   } else if (emailRex.test(value)) {
     result.error = false;
     result.message = '';
@@ -39,10 +39,13 @@ export const validateEmptyField = (value, errorMsg) => {
   return result;
 };
 
-export const validatePassword = (value) => {
+export const validatePassword = (value, emptyValidation=true) => {
   const numberRegex = /\d/;
   const result = {};
-  if (value.length < 6) {
+  if(!value && emptyValidation) {
+    result.error = true;
+    result.message = '';
+  } else if (value.length < 6) {
     result.error = true;
     result.message = L.t('Auth.signup.errors.passwordLength');
   } else if (!(value) || !numberRegex.test(value)) {
@@ -51,6 +54,21 @@ export const validatePassword = (value) => {
   } else {
     result.error = false;
     result.message = '';
+  }
+  return result;
+};
+
+export const validatePhone = (value, emptyValidation=true) => {
+  const result = {};
+  if(!value && emptyValidation) {
+    result.error = true;
+    result.message = '';
+  } else if(!value && !emptyValidation) {
+    result.error = true;
+    result.message = L.t('Auth.signup.errors.phone');
+  }else if (value.length < 10) {
+    result.error = true;
+    result.message = L.t('Auth.signup.errors.phone');
   }
   return result;
 };

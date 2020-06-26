@@ -13,6 +13,7 @@ const TestLayout = ({ goToPage, isLoggedIn, isTestOn }) => {
       else
         goToPage(authPath.login);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
   return (
     <React.Fragment>

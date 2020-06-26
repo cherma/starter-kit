@@ -19,6 +19,7 @@ export const SITE_KEY = '6LdOsIQUAAAAAAKu33zJmN0M_tC3wcygzIgaZwY7';
 const AuthLayout = ({ isLoggedIn, goToPage }) =>  {
   useEffect(()=>{
     isLoggedIn && goToPage(dashboardPath.markQuestion);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
 
   return (

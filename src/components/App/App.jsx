@@ -14,6 +14,7 @@ const App = ({ setupApp, goToPage, userInfo, visibleAlert, newNotification }) =>
   const { isAppLoading, isLoggedIn, isAssessmentRunning } = userInfo;
   useEffect(() => {
     setupApp();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
 
   return (

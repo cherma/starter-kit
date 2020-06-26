@@ -19,6 +19,7 @@ const ResetPassword = ({ resetPassword, validateId, goToPage, disableButton }) =
     } else {
       goToPage(authPath.login);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
 
   const blurHandler = (e, data, error) => {

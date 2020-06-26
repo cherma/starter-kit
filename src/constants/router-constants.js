@@ -3,7 +3,8 @@ export const authPath = {
   signup: '/Register',
   forgotPassword: '/forgot-password',
   activateAccount: '/activation',
-  resetPassword: '/resetpassword'
+  resetPassword: '/resetpassword',
+  termsAndCond: '/terms-and-condition'
 };
 
 export const dashboardPath = {
