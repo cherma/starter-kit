@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 import { authPath } from 'constants/router-constants';
 
 
-const Signup = ({ sitekey, disableButton, checkPhone, checkEmail, registedEmail, registedPhone, updateReducer }) => {
+const Signup = ({ sitekey, disableButton, checkPhone, checkEmail, registedEmail, registedPhone, updateReducer, createAccount }) => {
 
   const [fields, setFieldData] = useState({
     firstName: '', lastName: '', email: '', password: '',firstNameError: '', lastNameError: '', emailError: '', passwordError: '', phone: '', phoneError: '',
@@ -129,8 +129,9 @@ const Signup = ({ sitekey, disableButton, checkPhone, checkEmail, registedEmail,
       { error: false, message: ''} :
       { error: true, message: L.t('Auth.signup.errors.captcha') };
 
-    if(isCaptchaValid.error && !isPhoneValid.error && !isFirstNameValid.error && !isLastNameValid.error && !isEmailValid.error && !isPasswordValid.error){
-      alert('Make Api');
+    if(!isCaptchaValid.error && !isPhoneValid.error && !isFirstNameValid.error && !isLastNameValid.error && !isEmailValid.error && !isPasswordValid.error){
+      const { firstName, lastName, email, phone, captcha } = fields;
+      createAccount({firstName, lastName, email, phone, captcha });
     } else {
       setErrorsOnSubmit(isFirstNameValid, isLastNameValid, isEmailValid, isPasswordValid, isCaptchaValid, isPhoneValid);
     }
@@ -229,7 +230,8 @@ Signup.propTypes = {
     PropTypes.bool,
     PropTypes.string
   ),
-  updateReducer: PropTypes.func
+  updateReducer: PropTypes.func,
+  createAccount: PropTypes.func
 };
 
 export default Signup;

@@ -10,13 +10,12 @@ import Alert from 'components/common-components/Alert';
 import Notification from 'components/common-components/Notification';
 
 
-const App = ({ setupApp, goToPage, userInfo, visibleAlert, newNotification }) => {
+const App = ({ setupApp, goToPage, userInfo, visibleAlert, location }) => {
   const { isAppLoading, isLoggedIn, isAssessmentRunning } = userInfo;
   useEffect(() => {
     setupApp();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
-
   return (
     <React.Fragment>
       {
@@ -26,7 +25,7 @@ const App = ({ setupApp, goToPage, userInfo, visibleAlert, newNotification }) =>
           () =>  <Switch>
             <Route path={'/user'} component={DashboardLayout} />
             <Route path={'/test'} component={()=><TestLayout goToPage={goToPage} isLoggedIn={isLoggedIn} isTestOn={isAssessmentRunning} />} />
-            <Route path={'/'} component={()=><AuthLayout isLoggedIn={isLoggedIn} goToPage={goToPage} />} />
+            <Route path={'/'} component={()=><AuthLayout location={location} isLoggedIn={isLoggedIn} goToPage={goToPage} />} />
           </Switch>
         )
       }
@@ -48,9 +47,6 @@ App.propTypes = {
     PropTypes.object.isRequired,
     PropTypes.oneOf([null]).isRequired,
   ]),
-  newNotification: PropTypes.oneOfType([
-    PropTypes.object.isRequired,
-    PropTypes.oneOf([null]).isRequired,
-  ])
+  location: PropTypes.object
 };
 export default App;

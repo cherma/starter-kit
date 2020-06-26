@@ -11,7 +11,6 @@ export const getUserDetails = function*(action) {
     yield put(updateUserInfo({ ...userInfo.data, isAppLoading: false, isLoggedIn: true}));
   } catch (error) {
     yield put(updateUserInfo({isAppLoading: false, isLoggedIn: false, isAssessmentRunning: false}));
-    yield put(push(authPath.login));
   }
 };
 

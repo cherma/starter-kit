@@ -1,7 +1,7 @@
 import React, { Suspense, lazy, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Container } from 'reactstrap';
-import PagesHeader from 'components/common-components/Header/PagesHeader';
+import Header from './Header';
 import { Switch, Route } from 'react-router';
 import { authPath, dashboardPath } from 'constants/router-constants';
 
@@ -16,7 +16,7 @@ const Signup = lazy(()=>import('../../Auth/Signup'));
 
 export const SITE_KEY = '6LdOsIQUAAAAAAKu33zJmN0M_tC3wcygzIgaZwY7';
 
-const AuthLayout = ({ isLoggedIn, goToPage }) =>  {
+const AuthLayout = ({ isLoggedIn, goToPage, location }) =>  {
   useEffect(()=>{
     isLoggedIn && goToPage(dashboardPath.markQuestion);
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -24,7 +24,7 @@ const AuthLayout = ({ isLoggedIn, goToPage }) =>  {
 
   return (
     <div className="auth-layout" style={{ backgroundImage: 'url('+bgImage+')' }}>
-      <PagesHeader/>
+      <Header location={location}/>
       <div className="wrapper wrapper-full-page" >
         <div className="full-page section-image"  >
           <Switch>
@@ -52,7 +52,8 @@ const AuthLayout = ({ isLoggedIn, goToPage }) =>  {
 
 AuthLayout.propTypes = {
   isLoggedIn: PropTypes.bool,
-  goToPage: PropTypes.func
+  goToPage: PropTypes.func,
+  location: PropTypes.object
 };
 
 export default AuthLayout;

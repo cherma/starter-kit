@@ -19,7 +19,7 @@ const notificationReducer = (state = initialState, action) => {
       };
     case ADD_NOTIFICATION:{
       const notification = {...action.notification};
-      notification.id = Math.floor(Math.random() * 100);
+      notification.id = Math.floor(Math.random() * 100).toString();
       return {
         ...state,
         notification: [{...notification}]

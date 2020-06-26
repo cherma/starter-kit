@@ -1,4 +1,5 @@
 export default {
+  skilloptima: 'Skill Optima',
   login: {
     content: {
       signup: 'Create Account',
@@ -14,6 +15,7 @@ export default {
       terms: 'By signing up, you agree to the ',
       termsLink: 'Terms of Service and Privacy Policy'
     },
+    successMsg: 'Activation mail has been sent to registed mail',
     errors: {
       email: 'Please enter a valid email',
       existingEmail: 'Email already exist!',
@@ -24,7 +26,8 @@ export default {
       phone: 'Please enter a valid number',
       phoneExist: 'Phone number already exist!',
       captcha: 'Please check the check box',
-      notActivatedError: 'You have already registered, please check your mail for activation link. \n If someone other than you have initiated please call +919176650250'
+      notActivatedError: 'You have already registered, please check your mail for activation link. \n If someone other than you have initiated please call +919176650250',
+      tryAgain: 'Something went wrong. Please try again!'
     }
   },
   forgetPassword: {

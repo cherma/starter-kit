@@ -9,6 +9,9 @@ export const getSignupData = state => state.auth.signup;
 export const getRegistedEmail = state => state.auth.signup.registedEmail;
 export const getRegistedPhone = state => state.auth.signup.registedPhone;
 
+//Location
+export const getLocation = state => state.router.location;
+
 //Dashboard => Markquestions
 export const getMarkedQuestionsDetails = state => state.markQuestions;
 

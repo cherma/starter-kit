@@ -47,3 +47,5 @@ export const filterParamsConstructor = ( data, field, activeStream ) => {
     default: return {courseId: activeStream, isFullTest, offset:0};
   }
 };
+
+export const activeRoute = (location, path) => location.pathname.indexOf(path) > -1 ? 'active' : '';

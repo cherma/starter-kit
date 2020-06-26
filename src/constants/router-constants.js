@@ -28,3 +28,8 @@ export const dashboard = [
   { path: dashboardPath.wrongQuestion, name: 'Wrong Questions', icon: 'ui-1_simple-remove'},
   { path: dashboardPath.changePassword, name: 'Change Password', icon: 'media-2_sound-wave'},
 ];
+
+export const authHeader = [
+  { path: authPath.signup, name: 'Register', icon: 'tech_mobile'},
+  { path: authPath.login, name: 'Login', icon: 'users_circle-08'}
+];
