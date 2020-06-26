@@ -6,6 +6,7 @@ import { detectMob, renderIf } from 'utils/helper';
 import MobNavItems from './MobNavItems';
 import DesktopNavItmes from './DesktopNavItems';
 import { useCurrentWitdh } from './Header.hooks';
+
 const Header = ({ routes, location, creditPoints, imagePreviewUrl, profileName, history, signOut}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -95,6 +96,7 @@ const Header = ({ routes, location, creditPoints, imagePreviewUrl, profileName, 
                   dropdownToggle={dropdownToggle}
                   dropdownOpen={dropdownOpen}
                   changePassword={changePassword}
+                  signOut={signOut}
                 />
               )
             }

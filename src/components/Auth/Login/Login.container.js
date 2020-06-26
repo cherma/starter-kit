@@ -1,5 +1,12 @@
 import { connect } from 'react-redux';
 import { doLogin } from 'actions';
+import { getButtonState } from 'utils/redux-selectors';
+
+const mapStateToProps = state => {
+  return {
+    isLoading: getButtonState(state)
+  };
+};
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -10,6 +17,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 );

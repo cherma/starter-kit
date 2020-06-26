@@ -1,4 +1,14 @@
 export default {
+  login: {
+    content: {
+      signup: 'Create Account',
+      forgotPassword: 'Forgot Password ?',
+      getStarted: 'Get started'
+    },
+    errors: {
+      password: 'Please enter password'
+    }
+  },
   signup:{
     content: {
       terms: 'By signing up, you agree to the ',

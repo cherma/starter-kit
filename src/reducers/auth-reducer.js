@@ -1,5 +1,4 @@
-import { UPDATE_ACTIVATE_ACCOUNT, SUBMIT_ACTION, UPDATE_AUTH_LOADER, UPDATE_SIGNUP_RESPONSE } from 'actions/types';
-import { act } from 'react-dom/test-utils';
+import { UPDATE_ACTIVATE_ACCOUNT, SUBMIT_ACTION, UPDATE_AUTH_LOADER, UPDATE_SIGNUP_RESPONSE, FLUSH_ALL } from 'actions/types';
 
 const initialState = {
   userActivation: '',
@@ -38,6 +37,19 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         signup
+      };
+    }
+
+    case FLUSH_ALL: {
+      return {
+        userActivation: '',
+        isProfileChange: null,
+        disableButton: false,
+        isLoading: false,
+        signup: {
+          registedEmail: false,
+          registedPhone: false
+        }
       };
     }
 

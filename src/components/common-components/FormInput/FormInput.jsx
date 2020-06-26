@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FormGroup, Input, InputGroup, InputGroupAddon } from 'reactstrap';
 import { validateEmail, validateEmptyField, validatePassword } from 'utils/field-validators';
 import './FormInput.css';
+import L from 'utils/localization';
 
 
 const FormInput = ({ type, placeholder, autoFocus, iconClass, changeCallback, blurCallback, validations, theme, keyDown, errorMessage }) => {
@@ -23,18 +24,18 @@ const FormInput = ({ type, placeholder, autoFocus, iconClass, changeCallback, bl
     } else if (type === 'email') {
       const isValidEmail = validateEmail(value);
       setError(isValidEmail.error);
-      blurCallback(event, value, isValidEmail.message);
+      blurCallback(event, value, isValidEmail.message, 'email');
     } else if (type === 'password') {
       if (validations.includes('empty')) {
-        const isValidPassword = validateEmptyField(value, 'Invalid Password');
+        const isValidPassword = validateEmptyField(value, L.t('Auth.login.errors.password'));
         setError(isValidPassword.error);
-        blurCallback(event, value, isValidPassword.message);
+        blurCallback(event, value, isValidPassword.message, 'password');
       }
 
       if (validations.includes('new')) {
         const isValidPassword = validatePassword(value);
         setError(isValidPassword.error);
-        blurCallback(event, value, isValidPassword.message);
+        blurCallback(event, value, isValidPassword.message, 'password');
       }
     }
   };
@@ -44,8 +45,8 @@ const FormInput = ({ type, placeholder, autoFocus, iconClass, changeCallback, bl
     setFocus(true);
   };
 
-  const changeHandler = (event, changeCallback) => {
-    changeCallback(event);
+  const changeHandler = (event, changeCallback, type) => {
+    changeCallback(event,type);
   };
 
   const [isFocused, setFocus] = useState(autoFocus);
@@ -72,7 +73,7 @@ const FormInput = ({ type, placeholder, autoFocus, iconClass, changeCallback, bl
           onBlur={e =>  blurHandler(e, type, validations, setFocus, setError, blurCallback, errorMessage)}
           onFocus={() => focusHandler(setFocus, setError)}
           onKeyDown={(e)=>keyDown(e)}
-          onChange={(e) => changeHandler(e, changeCallback)}
+          onChange={(e) => changeHandler(e, changeCallback, type)}
         />
       </InputGroup>
     </FormGroup>

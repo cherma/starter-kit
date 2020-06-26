@@ -1,4 +1,4 @@
-import { SET_MARKED_QUESTION } from '../actions/types';
+import { SET_MARKED_QUESTION, FLUSH_ALL } from '../actions/types';
 import { questionType } from 'constants/data-type-constants';
 
 const initialState = {
@@ -15,6 +15,9 @@ const markQuestionReducer = (state = initialState, action) => {
       };
     }
 
+    case FLUSH_ALL: return {
+      ...questionType
+    };
     default: return state;
   }
 };

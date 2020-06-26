@@ -1,4 +1,4 @@
-import { ADD_ALERT, REMOVE_ALERT, ADD_NOTIFICATION } from 'actions/types';
+import { ADD_ALERT, REMOVE_ALERT, ADD_NOTIFICATION, FLUSH_ALL } from 'actions/types';
 
 const initialState = {
   alerts: [],
@@ -25,6 +25,10 @@ const notificationReducer = (state = initialState, action) => {
         notification: [{...notification}]
       };
     }
+    case FLUSH_ALL: return {
+      alerts: [],
+      notification:[]
+    };
     default:
       return state;
   }

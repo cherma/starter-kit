@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { signout } from 'actions';
 import { getUserInfo } from 'utils/redux-selectors';
+import { push } from 'connected-react-router';
 
 const mapStateToProps = (state) => {
   return {
@@ -10,7 +11,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    signout: () => dispatch(signout())
+    signOut: () => dispatch(signout()),
+    goToPage: (page) => dispatch(push(page)),
   };
 };
 

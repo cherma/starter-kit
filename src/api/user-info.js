@@ -11,3 +11,7 @@ export const fetchUserInfoLogin = (email, password) => {
 export const fetchUserInfo = () => {
   return http.post('/skilloptima/user/getUserInfo');
 };
+
+export const signoutAccount = () => {
+  return http.get('/skilloptima/user/signout');
+};
